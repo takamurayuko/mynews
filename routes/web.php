@@ -38,7 +38,7 @@ use App\Http\Controllers\Admin\ProfileController;
 Route::controller(NewsController::class)->prefix('admin')->group(function() {
     Route::get('profile/create', 'add');
 });
-use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\Profile2Controller;
 Route::controller(NewsController::class)->prefix('admin')->group(function() {
     Route::get('profile/edit', 'edit');
 });
