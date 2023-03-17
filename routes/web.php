@@ -20,10 +20,7 @@ use App\Http\Controllers\Admin\NewsController;
 Route::controller(NewsController::class)->prefix('admin')->group(function() {
     Route::get('news/create', 'add');
 });
-/* 3、http://XXXXXX.jp/XXXというアクセスが来た時に、
-AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみてください
-*/
-//use App\Http://XXXXXX.jp/XXX;
+
 Route::controller(AAAController::class)->group(function()
 {
     Route::get('XXX', 'bbb');
@@ -41,7 +38,6 @@ Route::controller(ProfileController::class)->prefix('admin')->group(function() {
     Route::get('profile/create', 'add');
 });
 
-use App\Http\Controllers\Admin\Profile2Controller;
 Route::controller(ProfileController::class)->prefix('admin')->group(function() {
     Route::get('profile/edit', 'edit');
 });
