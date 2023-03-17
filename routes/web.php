@@ -27,18 +27,24 @@ AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみ�
 Route::controller(AAAController::class)->group(function()
 {
     Route::get('XXX', 'bbb');
-});
-/*　4、前章でAdmin/ProfileControllerを作成し、add Action, edit Actionを追加しました。
+   
+   /*　4、前章でAdmin/ProfileControllerを作成し、add Action, edit Actionを追加しました。
 web.phpを編集して、admin/profile/create にアクセスしたら ProfileController の 
 add Action に、
 admin/profile/edit にアクセスしたら
 ProfileController の edit Action に割り当てるように設定してください
-*/
+*/ 
+});
+
 use App\Http\Controllers\Admin\ProfileController;
-Route::controller(NewsController::class)->prefix('admin')->group(function() {
+Route::controller(ProfileController::class)->prefix('admin')->group(function() {
     Route::get('profile/create', 'add');
 });
+
 use App\Http\Controllers\Admin\Profile2Controller;
-Route::controller(NewsController::class)->prefix('admin')->group(function() {
+Route::controller(ProfileController::class)->prefix('admin')->group(function() {
     Route::get('profile/edit', 'edit');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
