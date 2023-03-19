@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 use App\Http\Controllers\Admin\NewsController;
 Route::controller(NewsController::class)->prefix('admin')->group(function() {
-    Route::get('news/create', 'add');
+    Route::get('news/create', 'add')->middleware('auth');
 });
 
 Route::controller(AAAController::class)->group(function()
@@ -35,12 +35,10 @@ ProfileController の edit Action に割り当てるように設定してくだ�
 
 use App\Http\Controllers\Admin\ProfileController;
 Route::controller(ProfileController::class)->prefix('admin')->group(function() {
-    Route::get('profile/create', 'add');
+    Route::get('profile/create', 'add')->middleware('auth');
+    Route::get('profile/edit', 'edit')->middleware('auth');
 });
 
-Route::controller(ProfileController::class)->prefix('admin')->group(function() {
-    Route::get('profile/edit', 'edit');
-});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
