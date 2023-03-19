@@ -17,29 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 use App\Http\Controllers\Admin\NewsController;
-Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')->
-group(function() {
-    Route::get('news/create', 'add')->name('newa.add');
+Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function() {
+    Route::get('news/create', 'add')->name('news.add');
     Route::post('news/create', 'create')->name('news.create');
 });
 
 Route::controller(AAAController::class)->group(function()
 {
     Route::get('XXX', 'bbb');
-   
-   /*　4、前章でAdmin/ProfileControllerを作成し、add Action, edit Actionを追加しました。
-web.phpを編集して、admin/profile/create にアクセスしたら ProfileController の 
-add Action に、
-admin/profile/edit にアクセスしたら
-ProfileController の edit Action に割り当てるように設定してください
-*/ 
 });
 
 use App\Http\Controllers\Admin\ProfileController;
-Route::controller(ProfileController::class)->prefix('admin')->group(function() {
+Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function() 
+{
     Route::get('profile/create', 'add')->middleware('auth');
+    Route::post('profile/create', 'create')->name('profile.create');
     Route::get('profile/edit', 'edit')->middleware('auth');
+    Route::post('profile/edit', 'update')->name('profile.edit');
 });
+    
 
 Auth::routes();
 
