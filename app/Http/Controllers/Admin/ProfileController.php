@@ -28,13 +28,23 @@ class ProfileController extends Controller
         return redirect('admin/profile/create');
     }
     
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('admin.profile.edit');
+        $profile = profile::find($request->id);
+        if (empty($profile)) {
+            abort(404);
+        }
+        return view('admin.profile.edit', ['profile_form' => $profile]);
     }
     
-    public function update()
+    public function update(Request $request)
     {
+        $this->validate($request, profile::$rules);
+        
+        $news = profile::find($request->id);
+        
+        $news_form = $request->all();
+        
         return redirect('admin/profile/edit');
     }
     
