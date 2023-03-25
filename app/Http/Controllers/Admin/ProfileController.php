@@ -24,6 +24,9 @@ class ProfileController extends Controller
         $profile = new profile;
         $form = $request->all();
         
+        // フォームから送信されてきた_tokenを削除する
+        unset($form['_token']);
+        
         $profile->fill($form);
         $profile->save();
         
