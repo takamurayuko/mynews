@@ -27,7 +27,6 @@
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ secure_asset('css/profile.css') }}" rel="stylesheet">
         <link href="{{ secure_asset('css/index.css') }}" rel="stylesheet">
     </head>
     <body>
@@ -49,6 +48,7 @@
                         
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav">
+                        <!-- Authentication Links -->
                         {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a></li>
