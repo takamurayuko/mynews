@@ -53,7 +53,7 @@ class ProfileController extends Controller
         $profile_form = $request->all();
         // $profile に $profile_form の値を反映させる
         
-        $history = new ProfileHistory();
+        $history = new profilehistory();
         $history->profile_id = $profile->id;
         $history->edited_at = Carbon::now();
         $history->save();
@@ -64,10 +64,10 @@ class ProfileController extends Controller
      public function delete(Request $request)
     {
         // 該当する Modelを取得
-        $news = Profile::find($request->id);
+        $profile = Profile::find($request->id);
 
         // 削除する
-        $news->delete();
+        $profile->delete();
 
         return redirect('admin/profile/edit');
     }

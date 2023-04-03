@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.index')
 
 @section('content')
     <div class="container">
@@ -9,16 +9,20 @@
                 <div class="post">
                     <div class="row">
                         <div class="text col-md-6">
-                            <div class="title">
+                                <label class="col-md-2">名前</label>
+                            <div class="name">
                                 {{ Str::limit($post->name, 150) }}
                             </div>
-                            <div class="title">
+                                <label class="col-md-2">性別</label>
+                            <div class="name">
                                 {{ Str::limit($post->gender, 150) }}
                             </div>
-                            <div class="title">
+                                <label class="col-md-2">趣味</label>
+                            <div class="name">
                                 {{ Str::limit($post->hobby, 150) }}
                             </div>
-                            <div class="body mt-3">
+                                <label class="col-md-3">自己紹介欄</label>
+                            <div class="name">
                                 {{ Str::limit($post->introduction, 1500) }}
                             </div>
                         </div>
