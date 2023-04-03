@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class profileHistory extends Model
+class ProfileHistory extends Model
 {
     use HasFactory;
     
@@ -15,4 +15,12 @@ class profileHistory extends Model
         'profile_id' => 'required',
         'edited_at' => 'required',
         );
+
+    // テーブル名を指定する
+    protected $table = 'profilehistories';
+    
+    public function profilehistories()
+    {
+        return $this->hasMany('App\Models\PlofileHistory');
+    }
 }
