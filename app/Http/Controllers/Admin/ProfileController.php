@@ -46,12 +46,15 @@ class ProfileController extends Controller
     
     public function update(Request $request)
     {
-        $this->validate($request, Profile::$rules);
         // Validationをかける
+        $this->validate($request, Profile::$rules);
+        
+         // 送信されてきたフォームデータを格納する
         $profile = Profile::find($request->id);
-        // 送信されてきたフォームデータを格納する
-        $profile_form = $request->all();
+       
         // $profile に $profile_form の値を反映させる
+        $profile_form = $request->all();
+       
         
         $history = new profilehistory();
         $history->profile_id = $profile->id;

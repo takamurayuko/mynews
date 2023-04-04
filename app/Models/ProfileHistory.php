@@ -19,8 +19,4 @@ class ProfileHistory extends Model
     // テーブル名を指定する
     protected $table = 'profilehistories';
     
-    public function profilehistories()
-    {
-        return $this->hasMany('App\Models\PlofileHistory');
-    }
 }
