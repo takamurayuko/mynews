@@ -37,7 +37,7 @@ class ProfileController extends Controller
     
     public function edit(Request $request)
     {
-        $Profile = Profile::find($request->id);
+        $profile = Profile::find($request->id);
         if (empty($profile)) {
             abort(404);
         }
@@ -54,14 +54,20 @@ class ProfileController extends Controller
        
         // $profile に $profile_form の値を反映させる
         $profile_form = $request->all();
-       
+        
+        unset($profile_form['_token']);
+        
+        $profile->fill($profile_form);
+        $profile->save();
+        
         
         $history = new profilehistory();
         $history->profile_id = $profile->id;
         $history->edited_at = Carbon::now();
         $history->save();
         
-        return redirect('admin/profile/edit');
+        return redirect('admin/profile/edit?id='. $profile->id);
+    
     }
     
      public function delete(Request $request)

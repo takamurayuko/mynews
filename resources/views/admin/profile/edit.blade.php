@@ -38,6 +38,7 @@
                             <textarea class="form-control" name="introduction" rows="15">{{ $profile_form->introduction }}</textarea>
                         </div>
                     </div>
+                    <input type="hidden" name="id" value="{{ $profile_form->id }}">
                     <div class="form-group row">
                         <div class="col-md-10">
                             @csrf
